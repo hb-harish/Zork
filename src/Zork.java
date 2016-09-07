@@ -4,12 +4,21 @@ import java.util.Random;
 
 public class Zork 
 {
+	static int amt =0;
 	static int flag;
+	public static int money()
+	{
+		Random mon = new Random();
+		int m =  mon.nextInt(1001);
+		System.out.println("\nThis room has " + m + "$\n");
+		return m;
+	}
 	public static int room1(int p)
 	{
 		Scanner sc = new Scanner(System.in);
 		System.out.println("\nYou are in a foyer in an old house.\nIt has a dead rhino\n");
-		System.out.println("You can go north \"1\" or quit \"0\"\n");
+		amt = amt + money();
+		System.out.println("You can go north \"1\" or Exit the house \"0\"\n");
 		int o = sc.nextInt(); 
 		if (o==1)
 			p = 2;
@@ -101,7 +110,7 @@ public class Zork
 		int r = 1+ rnd.nextInt(4);
 		if (o==1)
 		{
-			System.out.print(r);
+			//System.out.print(r);
 			if(r==1)
 			{
 				p = 8;
