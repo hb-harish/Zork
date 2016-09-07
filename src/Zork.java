@@ -5,19 +5,53 @@ import java.util.Random;
 public class Zork 
 {
 	static int amt =0;
-	static int flag;
-	public static int money()
+	static int flag,mflag;
+	static int tflag =0;
+	static int r1 = 0;
+	static int r2 = 0;
+	static int r3 = 0;
+	static int r4 = 0;
+	static int r5 = 0;
+	static int r6 = 0;
+	static int r7 = 0;
+	static int r8 = 0;
+	Random theif = new Random();
+	static int th =  1 + theif.nextInt(8);
+	public static void money()
 	{
 		Random mon = new Random();
 		int m =  mon.nextInt(1001);
-		System.out.println("\nThis room has " + m + "$\n");
-		return m;
+		System.out.println("You found " + m + "$\n");
+		amt = amt + m;
+		System.out.println("your total money is " + amt + "$\n");
+	}
+	public static void theif()
+	{
+		Random d = new Random();
+		int coin =  d.nextInt(2);
+		System.out.println("\nA crazy theif appreared\n");
+		System.out.println("He wants to gamble you for your money\n");
+		System.out.println("You agree because he has a gun\n");
+		System.out.println("Call heads\"1\" or tails \"2\"");
+		int ch = sc.nextInt();
+		if (coin==0)
+			System.out.println("Theif flips Heads\n");
+		else if (o==0)
+			System.out.println("Theif flips Tails\n");
+		if (coin==ch)
+			System.out.println("Theif is sad and leaves you alone\n");
+		else 
+			System.out.println("You lose your money\n");
+			amt = 0;
+		
+		amt = amt + m;
+		System.out.println("your total money is " + amt + "$\n");
 	}
 	public static int room1(int p)
 	{
+		r1++;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("\nYou are in a foyer in an old house.\nIt has a dead rhino\n");
-		amt = amt + money();
 		System.out.println("You can go north \"1\" or Exit the house \"0\"\n");
 		int o = sc.nextInt(); 
 		if (o==1)
@@ -31,6 +65,7 @@ public class Zork
 	}
 	public static int room2(int p)
 	{
+		r2++;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("\nYou reach the front room and see a beautiful piano\n");
 		System.out.println("You can go south \"1\", west \"2\" east \"3\" or quit \"0\"\n");
@@ -50,6 +85,7 @@ public class Zork
 	}
 	public static int room3(int p)
 	{
+		r3++;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("\nYou are in the library of doom. There are spiders eveywhere\n");
 		System.out.println("You can go north \"1\", east \"2\" or quit \"0\"\n");
@@ -67,6 +103,7 @@ public class Zork
 	}
 	public static int room4(int p)
 	{
+		r4++;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("\nYou are in Hell's Kitchen. There are bats everywhere\n");
 		System.out.println("You can go west \"1\", north \"2\" or quit \"0\"\n");
@@ -84,6 +121,7 @@ public class Zork
 	}
 	public static int room5(int p)
 	{
+		r5++;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("\nYou have reached a dusty dinning room.\n On the table is an empty box\n");
 		System.out.println("You can go south \"1\" or quit \"0\"\n");
@@ -99,6 +137,7 @@ public class Zork
 	}
 	public static int room6(int p)
 	{
+		r6++;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("\nYou have reached the vault.\nThere are 3 scary walking skeletons\n");
 		if (flag==0)
@@ -133,6 +172,7 @@ public class Zork
 	}
 	public static int room7(int p)
 	{
+		r7++;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("\nYou have the reached the parlor.\nYou found a treasure chest.\n");
 		System.out.println("You can go south \"1\", west \"2\" or quit \"0\"\n");
@@ -150,11 +190,12 @@ public class Zork
 	}
 	public static int room8(int p)
 	{
+		r8++;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("\nYou have the reached the secret room and found a mountain of gold.\n");
 		System.out.println("You can go west \"1\" or quit \"0\"\n");
 		int o = sc.nextInt(); 
-		if (o==1)
+		if (o==1)			if (p==1 && r1==0) money();
 			p = 6;
 		else if (o==0)
 			p =0;
@@ -169,6 +210,19 @@ public class Zork
 		int c = 0;
 		do
 		{
+			//if (p==1 && r1==0) money();
+			if (p==2 && r2==0) money();
+			if (p==3 && r3==0) money();
+			if (p==4 && r4==0) money();
+			if (p==5 && r5==0) money();
+			if (p==6 && r6==0) money();
+			if (p==7 && r7==0) money();
+			if (p==8 && r8==0) money();
+			if (th==p && tflag==0)
+			{
+				theif();
+				tflag=1;
+			}
 			switch (p)
 			{
 				case 1: p = room1(p);
