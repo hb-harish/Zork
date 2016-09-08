@@ -9,6 +9,7 @@ public class Zork
 	static int flag = 0;
 	static int tflag = 0;
 	static int lflag = 0;
+	static int rflag = 0;
 	static int r1 = 0;
 	static int r2 = 0;
 	static int r3 = 0;
@@ -150,7 +151,7 @@ public class Zork
 		curr =3;
 		String o;
 		System.out.println("\nYou are in the library of doom. There are spiders eveywhere\n");
-		if(lflag==1 && r3l<3)
+		if(lflag==1 && r3l<3 && rflag == 0)
 		{
 			System.out.println("\n The lamp reveals a secret message  \n");
 			System.out.println("\n What walks on four legs in the morning, two legs in the afternoon and three legs at night? \n");
@@ -160,7 +161,7 @@ public class Zork
 			o = o.toLowerCase();
 			if(o.equals("man"))
 			{
-				
+				rflag =1;
 				amt = amt + 1000;
 				System.out.println("Congratulations you have won 1000 dollars");
 				System.out.println("your total money is $" + amt + "\n");
@@ -407,8 +408,8 @@ public class Zork
 		System.out.println("\nThe number of rooms visited is " + c );
 		System.out.println("\nThe number of times you have seen the dead rhino is " + r1 );
 		System.out.println("\nThe number of times you have seen the beautiful piano is " + r2 );
-		System.out.println("\nThe number of times you have seen the dcreepy spiders " + r3 );
-		System.out.println("\nThe number of times you have seen the dscary bats is " + r4 );
+		System.out.println("\nThe number of times you have seen the creepy spiders " + r3 );
+		System.out.println("\nThe number of times you have seen the scary bats is " + r4 );
 		System.out.println("\nThe number of times you have seen the empty box is " + r5 );
 		System.out.println("\nThe number of times you have seen the walking skeletons is " + r6 );
 		System.out.println("\nThe number of times you have seen the treasure chest " + r7 );
